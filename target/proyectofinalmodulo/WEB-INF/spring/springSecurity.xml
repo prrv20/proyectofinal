@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns:bean="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://www.springframework.org/schema/security"
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://www.springframework.org/schema/security 
+http://www.springframework.org/schema/security/spring-security.xsd">
+
+		<http auto-config="true">
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/EditarEmpleado/*" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/revisarlog" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/FormularioAccidente" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/CrearEmpleado" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/ListadoEmpleados" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/MostrarAccidente" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/ListadoTasa" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/ultimopago/*" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/VerActividades" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/ListadoClientes" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/AgregarAsesoria" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/AgregarCapacitacion" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/AgregarPago" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/CrearCliente" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/EditarAsesoria/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/EditarCapacitacion/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/EditarCliente/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/FormularioMejora" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ListadoAsesoria" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ListadoClientes" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ListadoPago/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ListadoReporteCliente/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/MostrarCapacitacion" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ReporteGeneral" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ListadoMejoras" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/FormularioMejora" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/EditarMejora/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ListadoChequeos" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/AgregarCheck" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ListadoChequeos/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/EditarCheck/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/EliminarCheck/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ListadoClientesRest" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ListadoClienteRest/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/AgregarClienteRest" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/EditarClienteRest" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/EliminarClienteRest/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ListarCapacitacion" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/AgregarCapacitacion" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/EditarCapacitacion/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/EliminarCapacitacion/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/CrearVisita" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ListadoVisitas" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />		
+		<intercept-url pattern="/EliminarVisita/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ListadoEmpleadoRest" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/AgregarEmpleadoRest" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/EditarEmpleadoRest/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/ListarEmpleadoRest/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/EliminarEmpleadoRest/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/EditarVisita/*" access="hasRole('ADMIN') or hasRole('PROFESIONAL')" />
+		<intercept-url pattern="/FormularioAccidenteUsuario" access="hasRole('ADMIN') or hasRole('CLIENTE')" />
+		<csrf disabled="true"/>
+		</http>
+	
+	<authentication-manager>
+		<authentication-provider>
+		<user-service>
+			<user name="manuel" password="{noop}1234" authorities="ROLE_ADMIN" />		
+			<user name="javier" password="{noop}5678" authorities="ROLE_PROFESIONAL" />
+			<user name="andrea" password="{noop}user" authorities="ROLE_CLIENTE" />
+		</user-service>
+		</authentication-provider>
+	</authentication-manager>
+</bean:beans>
